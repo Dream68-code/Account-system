@@ -22,9 +22,9 @@ function onServerStop()
 function onScriptLoad()
 {
 stats <- array ( GetMaxPlayers(), null );
- db <- ConnectSQL("acc.db");
+ db <- ConnectSQL("Database.db");
  QuerySQL( db, "CREATE TABLE IF NOT EXISTS Accounts( Nickname TEXT, Password TEXT, IP VARCHAR(32), UID VARCHAR(255), UID2 VARCHAR(255), Kills INTEGER, Deaths INTEGER, Cash INTEGER, Bank INTEGER, Level INTEGER, AutoLogin TEXT )");
- print("Account system by SHy has been loaded.");
+ print("Account system by SHy has been loaded."); //This is to keep account system's credits
 }
 
 function onScriptUnload()
@@ -72,7 +72,7 @@ player.Cash = add;
 }
 function UpdateInfo(player)
 {
-QuerySQL( db, "UPDATE Accounts SET Kills = '"+stats[ player.ID ].Kills+"', Deaths='"+stats[ player.ID ].Deaths+"', Cash='"+stats[ player.ID ].Cash+"', Bank = '"+stats[ player.ID ].Bank+"' WHERE Nickname= '" + player.Name + "'" );
+QuerySQL( db, "UPDATE Accounts SET IP='"+player.IP+"', UID='"+player.UniqueID+"', UID2='"+player.UniqueID2+"', Kills = '"+stats[ player.ID ].Kills+"', Deaths='"+stats[ player.ID ].Deaths+"', Cash='"+stats[ player.ID ].Cash+"', Bank = '"+stats[ player.ID ].Bank+"' WHERE Nickname= '" + player.Name + "'" );
 print("Stats saved!");
 }
 // =========================================== P L A Y E R   E V E N T S ==============================================
@@ -160,7 +160,7 @@ stats[ player.ID ].Logged = true;
   else if ( !stats[ player.ID ].Registered ) MessagePlayer("[#ff0000]Error:[#ffffff] You're not registered, please type /register.", player);
 else
 {
-local q = QuerySQL( db, "SELECT * FROM Accouns WHERE Nickname='"+player.Name+"'" );
+local q = QuerySQL( db, "SELECT * FROM Accounts WHERE Nickname='"+player.Name+"'" );
 local Pass = QuerySQL( db, "SELECT Password FROM Accounts WHERE Nickname='"+player.Name+"'" );
 if ( SHA256( text ) != Pass ) MessagePlayer("[#ff0000]Error: [#ffffff] The password you entered is wrong.", player);
 else{
