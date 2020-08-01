@@ -129,6 +129,7 @@ function onPlayerTeamKill( killer, player, reason, bodypart )
 killer.Health = 0;
 Message("[#0000ff]Auto-Killed "+killer.Name+" for teamkilling.");
 stats[ killer.ID ].Deaths++;
+stats[ player.ID ].Deaths++;
 }
 
 function onPlayerChat( player, text )
@@ -345,12 +346,11 @@ function onPlayerEndTyping( player )
 {
 }
 
-/*
 function onLoginAttempt( player )
 {
 	return 1;
 }
-*/
+
 
 function onNameChangeable( player )
 {
