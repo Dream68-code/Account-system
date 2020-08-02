@@ -319,7 +319,7 @@ function onPlayerPM( player, playerTo, message )
 {
 	return 1;
 }
-// SLC's very useful commands
+// SLC's very useful functions
 function GetTok( string, separator, n, ... )
 {
  local m = ( vargv.len() > 0 ) ? vargv[ 0 ] : n, tokenized = split( string, separator ), text = "";
