@@ -178,7 +178,7 @@ stats[ player.ID ].Logged = true;
 else
 {
 local q = QuerySQL( db, "SELECT * FROM Accounts WHERE Nickname='"+player.Name+"'" );
-local Pass = QuerySQL( db, "SELECT Password FROM Accounts WHERE Nickname='"+player.Name+"'" );
+local Pass = GetSQLColumnData( q, 1 );
 if ( SHA256( text ) != Pass ) MessagePlayer("[#ff0000]Error: [#ffffff] The password you entered is wrong.", player);
 else{
 stats[ player.ID ].Registered = true;
@@ -189,6 +189,8 @@ AddCash( player, GetSQLColumnData( q, 7 ) );
 stats[ player.ID ].Bank = GetSQLColumnData( q, 8 ).tointeger();
 stats[ player.ID ].Level = GetSQLColumnData( q, 9 ).tointeger();
 stats[ player.ID ].AutoLogin = GetSQLColumnData( q, 10 ).tostring();
+Message("[#00ff00]"+player.Name+" has logged into the server.");
+MessagePlayer("[#ffffff]You've successfully logged in!.", player);
 }
 }
 }
