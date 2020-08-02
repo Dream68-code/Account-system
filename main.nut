@@ -66,7 +66,7 @@ QuerySQL( db, "UPDATE Accounts SET IP='"+player.IP+"', UID='"+player.UniqueID+"'
 }
 else
 {
-MessaagePlayer("[#000fff]The account ( "+player.Name+" ) is registered, please login into it.", player);
+MessagePlayer("[#000fff]The account ( "+player.Name+" ) is registered, please login into it.", player);
 stats[ player.ID ].Registered = true;
 }
 }
