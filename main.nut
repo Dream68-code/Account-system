@@ -226,13 +226,13 @@ else
 {
 if ( text == "on" )
 {
-QuerySQL( db, "UPDATE Accounts SET AutoLogin='on' WHERE Nicknames='"+player.Name+"'" );
+QuerySQL( db, "UPDATE Accounts SET AutoLogin='on' WHERE Nickname='"+player.Name+"'" );
 MessagePlayer("[#00ff00]Your autologin has been turned on.", player);
 }
 }
  if ( text == "off" )
 {
-QuerySQL( db, "UPDATE Accounts SET AutoLogin='off' WHERE Nicknames='"+player.Name+"'" );
+QuerySQL( db, "UPDATE Accounts SET AutoLogin='off' WHERE Nickname='"+player.Name+"'" );
 MessagePlayer("[#00ff00]Your autologin has been turned off.", player);
 }
 else MessagePlayer("[#ff0000]Error: use /"+cmd+" <on/off>.", player);
@@ -286,7 +286,7 @@ else if ( plr.Name == player.Name ) return MessagePlayer("[#ffff00]You can't sen
 else
 {
 RemoveCash( player, amount.tointeger() );
-AddCash( pLr, amount.tointeger() );
+AddCash( plr, amount.tointeger() );
 MessagePlayer("[#fffffff]You gave "+amount.tointeger()+"$ to "+plr.Name+".", player);
 MessagePlayer("[#fffffff]You have received "+amount.tointeger()+"$ from "+player.Name+".", plr );
 }
