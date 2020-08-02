@@ -224,21 +224,19 @@ else if ( cmd == "setautologin" || cmd == "autologin" )
 if (!text) MessagePlayer("[#ff0000]Error: [#ffffff]Correct syntax: /"+cmd+" <on/off>.", player);
 else if ( !stats[ player.ID ].Registered ) MessagePlayer("[#ff0000]Error:[#ffffff] You're not registered.", player);
 else if ( !stats[ player.ID ].Logged ) MessagePlayer("[#ff0000]Error:[#ffffff] You're not logged in.", player);
-else
-{
-if ( text == "on" )
+else if ( text == "on" )
 {
 QuerySQL( db, "UPDATE Accounts SET AutoLogin='on' WHERE Nickname='"+player.Name+"'" );
 MessagePlayer("[#00ff00]Your autologin has been turned on.", player);
 }
-}
- if ( text == "off" )
+else if ( text == "off" )
 {
 QuerySQL( db, "UPDATE Accounts SET AutoLogin='off' WHERE Nickname='"+player.Name+"'" );
 MessagePlayer("[#00ff00]Your autologin has been turned off.", player);
 }
 else MessagePlayer("[#ff0000]Error: use /"+cmd+" <on/off>.", player);
 }
+
 else if ( cmd =="credits" || cmd == "credts" )
 {
 MessagePlayer("[#ff000f]Account system by SHy.", player);
