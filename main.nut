@@ -362,12 +362,6 @@ function onPlayerEndTyping( player )
 {
 }
 
-function onLoginAttempt( player )
-{
-	return 1;
-}
-
-
 function onNameChangeable( player )
 {
 }
@@ -434,11 +428,7 @@ function onClientScriptData( player )
     local stream = Stream.ReadByte();
     switch ( stream )
     {
-        case StreamType.ServerName:
-        {
-            // server received the request of client-side, so it sends back the server name
-            SendDataToClient( player, StreamType.ServerName, SRV_NAME );
-        }
+        default:
         break;
     }
 }
